@@ -1,13 +1,18 @@
 package exercicioAula02;
 
 public class Pessoa {
+
     private String nome;
     private int idade;
+    private Genero genero;
 
-    public Pessoa(String nome, int idade) {
+
+    public Pessoa(String nome, int idade, Genero genero) {
         this.nome = nome;
         this.idade = idade;
+        this.genero = genero;
     }
+
     public String getNome() {
         return nome;
     }
@@ -24,9 +29,19 @@ public class Pessoa {
         this.idade = idade;
     }
 
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
+
     public String imprimir() {
-        return "Pessoa:" +
-                "nome= " + nome + "\n" +
-                "idade= " + idade;
+        return "Pessoa{" +
+                "nome='" + nome + '\'' +
+                ", idade=" + idade +
+                ", genero=" + genero.getDescricao() +
+                '}';
     }
 }

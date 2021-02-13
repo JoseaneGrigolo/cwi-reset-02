@@ -38,10 +38,8 @@ public class Pessoa {
     }
 
     public String imprimir() {
-        return "Pessoa{" +
-                "nome='" + nome + '\'' +
-                ", idade=" + idade +
-                ", genero=" + genero.getDescricao() +
-                '}';
+        return "Nome= " + nome + "\n" +
+                "Idade= " + idade + "\n" +
+                "Genero= " + genero.getDescricao();
     }
 }

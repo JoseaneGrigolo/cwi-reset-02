@@ -4,10 +4,10 @@ public class Aplicacao {
 
     public static void main(String[] args) {
 
-        Funcionario funcionario = new Funcionario("Leo", 23, "000000000", 100, Cargo.ENGENHEIRO_SOLUCOES, "Contratado");
-        funcionario.fazAniver();
-        System.out.println(funcionario.calcularSalLiq());
-        System.out.println(funcionario.toString());
+        Pessoa pessoa = new Funcionario("Leo", 23, "00000000000", 10000, Cargo.ENGENHEIRO_SOLUCOES, "Contratado");
+        pessoa.fazAniver();
+        //System.out.println(funcionario.calcularSalLiq());
+        System.out.println(pessoa.toString());
     }
 
 }

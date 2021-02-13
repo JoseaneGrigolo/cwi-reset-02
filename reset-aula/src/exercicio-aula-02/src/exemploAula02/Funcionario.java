@@ -27,11 +27,10 @@ public class Funcionario extends Pessoa {
 
     @Override
     public String toString() {
-        return "Funcionario{" +
-                "salario=" + salario +
-                ", cargo=" + cargo.getDescricao() +
-                ", status='" + status + '\'' +
-                ", anosEmpresa=" + anosEmpresa +
-                '}';
+        return "Funcionario: \n" +
+                "Salario: " + salario + "\n" +
+                "Cargo: " + cargo.getDescricao() + "\n" +
+                "Status: " + status + "\n" +
+                "Anos de Empresa: " + anosEmpresa;
     }
 }

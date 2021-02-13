@@ -26,7 +26,7 @@ public class Alunos {
         this.notaFinal = notaFinal;
     }
 
-    boolean isAprovado(){
+    boolean isAprovado() {
         return notaFinal >= 7;
     }
 

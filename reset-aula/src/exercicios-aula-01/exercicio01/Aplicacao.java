@@ -10,16 +10,16 @@ public class Aplicacao {
 
         Calculadora calculadora = new Calculadora();
 
-        double resultadoSoma = calculadora.soma(5 , 10.7);
+        double resultadoSoma = calculadora.soma(5, 10.7);
         System.out.printf("Resultado da soma: %.2f\n", resultadoSoma);
 
-        double resultadoSubtrai = calculadora.subtrai(15.7 , 10);
+        double resultadoSubtrai = calculadora.subtrai(15.7, 10);
         System.out.printf("Resultado da subtração: %.2f\n", resultadoSubtrai);
 
-        double resultadoMultiplica = calculadora.multiplica(5.5 , 15);
+        double resultadoMultiplica = calculadora.multiplica(5.5, 15);
         System.out.printf("Resultado da multiplicação: %.2f\n", resultadoMultiplica);
 
-        double resultadoDivide = calculadora.divide(50.1 , 10);
+        double resultadoDivide = calculadora.divide(50.1, 10);
         System.out.printf("Resultado da divisão: %.2f\n", resultadoDivide);
 
 

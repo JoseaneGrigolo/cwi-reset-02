@@ -1,6 +1,6 @@
 package exercicioAula02;
 
-public class Diretor extends Pessoa{
+public class Diretor extends Pessoa {
 
     private int qtdadeFilmesDirigidos;
 

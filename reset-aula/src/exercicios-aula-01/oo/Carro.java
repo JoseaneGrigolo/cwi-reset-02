@@ -1,5 +1,4 @@
-package aula01.oo;
-
+package oo;
 public class Carro {
 
     private String marca;
@@ -28,7 +27,8 @@ public class Carro {
         velocidadeAtual = velocidadeDesejada;
         this.quantidadeCombustivel -= velocidadeDesejada * 0.02;
     }
-    void estacionar(){
+
+    void estacionar() {
         System.out.println("Estacionando o " + modelo);
         this.estacionado = true;
     }

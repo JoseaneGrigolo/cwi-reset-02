@@ -8,7 +8,7 @@ public enum Genero {
 
     private String descricao;
 
-    Genero(String descricao){
+    Genero(String descricao) {
         this.descricao = descricao;
     }
 

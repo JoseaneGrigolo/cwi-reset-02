@@ -9,12 +9,30 @@ public class Filme {
     private Diretor diretor;
 
     public Filme(String nome, String descricao, int duracaoMinutos, int anoLancamento, int avaliacao, Diretor diretor) {
+        defineAvaliacao(avaliacao);
+        validaNomeEDefineAvaliacao(nome);
         this.nome = nome;
         this.descricao = descricao;
         this.duracaoMinutos = duracaoMinutos;
         this.anoLancamento = anoLancamento;
-        this.avaliacao = avaliacao;
         this.diretor = diretor;
+    }
+
+    private void defineAvaliacao(int avaliacao) {
+        if (avaliacao < 1 || avaliacao > 5) {
+            this.avaliacao = 3;
+        } else {
+            this.avaliacao = avaliacao;
+        }
+
+    }
+
+    private void validaNomeEDefineAvaliacao(String nome) {
+        if ("Batman vs Superman".equals(nome)) {
+            this.avaliacao = 1;
+        } else if ("O Clube da Luta".equals(nome)) {
+            this.avaliacao = 5;
+        }
     }
 
     public String getNome() {
@@ -43,5 +61,7 @@ public class Filme {
                 "Descricao: " + descricao + "\n" +
                 "Duracao em Minutos: " + duracaoMinutos + "\n" +
                 "Diretor: " + diretor.getNome();
+
     }
+
 }

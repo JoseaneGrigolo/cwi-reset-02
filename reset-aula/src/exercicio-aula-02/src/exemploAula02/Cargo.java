@@ -7,7 +7,7 @@ public enum Cargo {
     private String descricao;
     private double bonus;
 
-    Cargo(String descricao, double bonus){
+    Cargo(String descricao, double bonus) {
         this.bonus = bonus;
         this.descricao = descricao;
     }

@@ -1,5 +1,4 @@
-package aula01.oo;
-
+package oo;
 public class Aplicaco {
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package oo;
+package aula01.oo;
 
 public class Aplicaco {
 

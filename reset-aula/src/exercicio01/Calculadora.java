@@ -4,19 +4,19 @@ public class Calculadora {
 
     public Calculadora() {}
 
-    int soma(int valorUm, int ValorDois){
+    double soma(double valorUm, double ValorDois){
         return valorUm + ValorDois;
     }
 
-    int subtrai(int valorUm, int ValorDois){
+    double subtrai(double valorUm, double ValorDois){
         return valorUm - ValorDois;
     }
 
-    int multiplica(int valorUm, int ValorDois){
+    double multiplica(double valorUm, double ValorDois){
         return valorUm * ValorDois;
     }
 
-    int divide(int valorUm, int ValorDois){
+    double divide(double valorUm, double ValorDois){
         return valorUm / ValorDois;
     }
 }

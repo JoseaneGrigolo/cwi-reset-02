@@ -5,6 +5,10 @@ public class Alunos {
     private String nome;
     private double notaFinal;
 
+    public Alunos(String nome) {
+        this.nome = nome;
+    }
+
     public Alunos(String nome, double notaFinal) {
         this.nome = nome;
         this.notaFinal = notaFinal;
@@ -18,12 +22,12 @@ public class Alunos {
         return notaFinal;
     }
 
+    public void setNotaFinal(double notaFinal) {
+        this.notaFinal = notaFinal;
+    }
+
     boolean isAprovado(){
-        if(this.notaFinal >= 7.0){
-            return true;
-        } else {
-            return false;
-        }
+        return notaFinal >= 7;
     }
 
 }

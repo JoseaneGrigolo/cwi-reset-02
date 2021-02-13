@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/reset-aula/src/exercicio-aula-02/aula2.iml" filepath="$PROJECT_DIR$/reset-aula/src/exercicio-aula-02/aula2.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/cwi-reset-02.iml" filepath="$PROJECT_DIR$/.idea/cwi-reset-02.iml" />
       <module fileurl="file://$PROJECT_DIR$/reset-aula/src/exercicios-aula-02/exercicios-aula-02.iml" filepath="$PROJECT_DIR$/reset-aula/src/exercicios-aula-02/exercicios-aula-02.iml" />
       <module fileurl="file://$PROJECT_DIR$/reset-aula/src/reset-aula.iml" filepath="$PROJECT_DIR$/reset-aula/src/reset-aula.iml" />

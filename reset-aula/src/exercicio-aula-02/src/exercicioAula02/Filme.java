@@ -1,5 +1,6 @@
-public class Filme {
+package exercicioAula02;
 
+public class Filme {
     private String nome;
     private String descricao;
     private int duracaoMinutos;
@@ -41,6 +42,6 @@ public class Filme {
                 "Nome: " + nome + "\n" +
                 "Descricao: " + descricao + "\n" +
                 "Duracao em Minutos: " + duracaoMinutos + "\n" +
-                "Diretor: " + diretor.getNomeDiretor();
+                "Diretor: " + diretor.getNome();
     }
 }

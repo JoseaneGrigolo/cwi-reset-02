@@ -4,20 +4,14 @@ public class Diretor {
     private int idade;
     private int qtdadeFilmesDirigidos;
 
-    public Diretor(String nomeDiretor) {
+    public Diretor(String nomeDiretor, int idade, int qtdadeFilmesDirigidos) {
         this.nomeDiretor = nomeDiretor;
-    }
-
-    public Diretor() {
-
+        this.idade = idade;
+        this.qtdadeFilmesDirigidos = qtdadeFilmesDirigidos;
     }
 
     public String getNomeDiretor() {
         return nomeDiretor;
-    }
-
-    public void setNomeDiretor(String nomeDiretor) {
-        this.nomeDiretor = nomeDiretor;
     }
 
 }

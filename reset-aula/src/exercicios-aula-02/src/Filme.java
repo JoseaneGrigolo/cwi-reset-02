@@ -1,18 +1,19 @@
-public class Filme extends Diretor{
+public class Filme {
 
     private String nome;
     private String descricao;
     private int duracaoMinutos;
     private int anoLancamento;
     private int avaliacao;
+    private Diretor diretor;
 
-    public Filme(String nome, String descricao, int duracaoMinutos, int anoLancamento, int avaliacao) {
-        super();
+    public Filme(String nome, String descricao, int duracaoMinutos, int anoLancamento, int avaliacao, Diretor diretor) {
         this.nome = nome;
         this.descricao = descricao;
         this.duracaoMinutos = duracaoMinutos;
         this.anoLancamento = anoLancamento;
         this.avaliacao = avaliacao;
+        this.diretor = diretor;
     }
 
     public String getNome() {
@@ -40,6 +41,6 @@ public class Filme extends Diretor{
                 "Nome: " + nome + "\n" +
                 "Descricao: " + descricao + "\n" +
                 "Duracao em Minutos: " + duracaoMinutos + "\n" +
-                "Diretor: " + getNomeDiretor();
+                "Diretor: " + diretor.getNomeDiretor();
     }
 }

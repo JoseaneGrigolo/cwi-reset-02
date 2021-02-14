@@ -16,10 +16,9 @@ public class Imovel {
         return valor;
     }
 
-    @Override
-    public String toString() {
+    public String apresentacao() {
         return "Imovel: \n" +
-                "Endereco= " + endereco + "\n" +
+                "Endereco= " + endereco.getEstado() + "\n" +
                 "Valor= R$ " + valor;
     }
 }

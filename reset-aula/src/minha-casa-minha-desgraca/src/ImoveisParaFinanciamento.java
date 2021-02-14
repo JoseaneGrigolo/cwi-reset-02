@@ -1,11 +1,12 @@
 import java.util.ArrayList;
-        import java.util.List;
+import java.util.List;
 
 public class ImoveisParaFinanciamento {
 
     private List<Imovel> imoveis;
 
     public ImoveisParaFinanciamento() {
+
         imoveis = new ArrayList<>();
     }
 
@@ -18,6 +19,12 @@ public class ImoveisParaFinanciamento {
      *      " > Atenção, problema de registro! Imóveis com valor R$ XXX não são aceitos no programa."
      */
     public void registrarImovel(Imovel imovel) {
+
+        if(imovel.getValor() >= 50000 && imovel.getValor() <= 1000000){
+            imoveis.add(imovel);
+        } else {
+            System.out.println("Atenção, problema de registro! Imóveis com valor R$ " + imovel.getValor() + " não são aceitos no programa.");
+        }
 
         // se "imovel" corresponder às regras, adicioná-lo à lista "imoveis" com o seguinte código:
         //    imoveis.add(imovel);
@@ -32,7 +39,9 @@ public class ImoveisParaFinanciamento {
 
         // percorre a lista de imóveis
         for (Imovel imovel : imoveis) {
-
+            if(imovel.getValor() <= valorLimite) {
+                opcoes.add(imovel);
+            }
             // se "imovel" corresponder às regras, adicioná-lo à lista de opcoes com o seguinte código:
             //    opcoes.add(imovel);
         }

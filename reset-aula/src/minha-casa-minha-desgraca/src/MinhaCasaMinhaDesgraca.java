@@ -18,6 +18,11 @@ public class MinhaCasaMinhaDesgraca {
          *
          * NÃO MODIFICAR ESTA CLASSE ANTES DESTA LINHA.
          */
+        opcoesParaFinanciamento.registrarImovel(new Imovel(new Endereco(UnidadeFederativa.RS), 50000));
+        opcoesParaFinanciamento.registrarImovel(new Imovel(new Endereco(UnidadeFederativa.SP), 50000));
+        opcoesParaFinanciamento.registrarImovel(new Imovel(new Endereco(UnidadeFederativa.RJ), 50000));
+        opcoesParaFinanciamento.registrarImovel(new Imovel(new Endereco(UnidadeFederativa.RN), 450000));
+        opcoesParaFinanciamento.registrarImovel(new Imovel(new Endereco(UnidadeFederativa.CE), 550000));
 
         /**
          * FIM

@@ -1,4 +1,4 @@
-public class Imovel {
+public abstract class Imovel {
 
     private Endereco endereco;
     private double valor;
@@ -16,9 +16,6 @@ public class Imovel {
         return valor;
     }
 
-    public String apresentacao() {
-        return "Imovel: \n" +
-                "Endereco= " + endereco.getEstado() + "\n" +
-                "Valor= R$ " + valor;
-    }
+    public abstract String apresentacao();
+
 }

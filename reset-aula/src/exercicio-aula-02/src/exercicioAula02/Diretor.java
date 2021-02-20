@@ -9,4 +9,13 @@ public class Diretor extends Pessoa {
         this.qtdadeFilmesDirigidos = qtdadeFilmesDirigidos;
     }
 
+    public int getQtdadeFilmesDirigidos() {
+        return qtdadeFilmesDirigidos;
+    }
+
+    public String imprimir() {
+        return  "Diretor: " + getNome() +"\n" +
+                "Quantidade Filmes Dirigidos: " + getQtdadeFilmesDirigidos();
+
+    }
 }

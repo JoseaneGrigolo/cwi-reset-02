@@ -9,4 +9,13 @@ public class Ator extends Pessoa {
         this.numOscars = numOscars;
     }
 
+    public int getNumOscars() {
+        return numOscars;
+    }
+
+    public String imprimir() {
+        return  "Ator: " + getNome() + "\n" +
+                "Numero de Oscars: " + getNumOscars();
+
+    }
 }

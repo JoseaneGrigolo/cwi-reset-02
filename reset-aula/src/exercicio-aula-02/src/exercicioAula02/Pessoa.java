@@ -1,6 +1,7 @@
 package exercicioAula02;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Pessoa {
 
@@ -27,7 +28,7 @@ public class Pessoa {
 
     public String imprimir() {
         return "Nome= " + nome + "\n" +
-                "Data Nascimento= " + dataNascimento + "\n" +
+                "Data Nascimento= " + Period.between(this.dataNascimento, LocalDate.now()).getYears() + "\n" +
                 "Genero= " + genero.getDescricao();
     }
 }

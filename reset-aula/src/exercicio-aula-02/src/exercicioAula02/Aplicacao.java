@@ -10,7 +10,7 @@ public class Aplicacao {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate meuNascimento = LocalDate.parse("25-09-1985", formatter);
-
+        //LocalDate meuNascimento = LocalDate.of(25, 09, 1985);
         Pessoa pessoa = new Pessoa("Josie", meuNascimento, Genero.FEMININO);
 
         System.out.println(pessoa.imprimir());
@@ -30,6 +30,7 @@ public class Aplicacao {
                 2020, 5, diretorUm, lista);
 
         filmeUm.exibirCreditos();
+        */
 
        // Diretor diretorDois = new Diretor("Guy Ritchie", 53, 30, Genero.MASCULINO);
        // Filme filmeDois = new Filme("Alladin", "Disney",
@@ -37,7 +38,7 @@ public class Aplicacao {
        // System.out.println(filmeDois.reproduzir());
        // System.out.println(diretorUm.imprimir());
       // System.out.println(filmeUm.reproduzir());
-*/
+
 
     }
 }

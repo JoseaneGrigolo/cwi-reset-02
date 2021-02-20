@@ -70,12 +70,22 @@ public class Filme {
                 "Diretor: " + diretor.getNome();
 
     }
+    /*
     public String creditos() {
         String retorno = "";
         for(Pessoa pessoa: elenco) {
             retorno = retorno + pessoa.imprimir() + "\n";
         }
         return retorno;
+    }
+    */
+
+    public void exibirCreditos() {
+        System.out.println("Elenco: ");
+        for(Pessoa pessoa: elenco) {
+            System.out.println(pessoa.imprimir());
+        }
 
     }
+
 }

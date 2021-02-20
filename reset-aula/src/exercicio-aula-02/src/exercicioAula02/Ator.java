@@ -1,11 +1,13 @@
 package exercicioAula02;
 
+import java.time.LocalDate;
+
 public class Ator extends Pessoa {
 
     private int numOscars;
 
-    public Ator(String nome, int idade, int numOscars, Genero genero) {
-        super(nome, idade, genero);
+    public Ator(String nome, LocalDate dataNascimento, int numOscars, Genero genero) {
+        super(nome, dataNascimento, genero);
         this.numOscars = numOscars;
     }
 
@@ -14,7 +16,9 @@ public class Ator extends Pessoa {
     }
 
     public String imprimir() {
-        return  "Ator: " + getNome() + "\n" +
+        //super.imprimir();
+        return   super.imprimir() + "\n" +
+               // "Ator: " + getNome() + "\n" +
                 "Numero de Oscars: " + getNumOscars();
 
     }

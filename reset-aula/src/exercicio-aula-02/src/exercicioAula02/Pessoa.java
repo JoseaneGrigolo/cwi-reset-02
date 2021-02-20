@@ -1,15 +1,17 @@
 package exercicioAula02;
 
+import java.time.LocalDate;
+
 public class Pessoa {
 
     private String nome;
-    private int idade;
+    private LocalDate dataNascimento;
     private Genero genero;
 
 
-    public Pessoa(String nome, int idade, Genero genero) {
+    public Pessoa(String nome, LocalDate dataNascimento, Genero genero) {
         this.nome = nome;
-        this.idade = idade;
+        this.dataNascimento = dataNascimento;
         this.genero = genero;
     }
 
@@ -17,29 +19,15 @@ public class Pessoa {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
     public Genero getGenero() {
         return genero;
     }
 
-    public void setGenero(Genero genero) {
-        this.genero = genero;
-    }
+
 
     public String imprimir() {
         return "Nome= " + nome + "\n" +
-                "Idade= " + idade + "\n" +
+                "Data Nascimento= " + dataNascimento + "\n" +
                 "Genero= " + genero.getDescricao();
     }
 }

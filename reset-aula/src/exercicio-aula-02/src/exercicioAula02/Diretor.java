@@ -1,11 +1,13 @@
 package exercicioAula02;
 
+import java.time.LocalDate;
+
 public class Diretor extends Pessoa {
 
     private int qtdadeFilmesDirigidos;
 
-    public Diretor(String nome, int idade, int qtdadeFilmesDirigidos, Genero genero) {
-        super(nome, idade, genero);
+    public Diretor(String nome, LocalDate dataNascimento, int qtdadeFilmesDirigidos, Genero genero) {
+        super(nome, dataNascimento, genero);
         this.qtdadeFilmesDirigidos = qtdadeFilmesDirigidos;
     }
 
@@ -14,7 +16,9 @@ public class Diretor extends Pessoa {
     }
 
     public String imprimir() {
-        return  "Diretor: " + getNome() +"\n" +
+        //super.imprimir(); Inserir este e retirar getNome
+        return  super.imprimir() + "\n" +
+               // "Diretor: " + getNome() +"\n" +
                 "Quantidade Filmes Dirigidos: " + getQtdadeFilmesDirigidos();
 
     }

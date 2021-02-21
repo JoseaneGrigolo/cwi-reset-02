@@ -8,9 +8,7 @@ public class Editora {
     private String localizacao;
 
    public Editora(String nome, String localizacao) {
-        if(nome.equalsIgnoreCase("DC Comics")){
-            throw new EditoraInvalidaException("Você não pode usar este nome!");
-        }
+        validarNome(nome);
         this.nome = nome;
         this.localizacao = localizacao;
     }
@@ -20,6 +18,12 @@ public class Editora {
 
     public String getLocalizacao() {
         return localizacao;
+    }
+
+    private void validarNome(String nome){
+        if(nome.equalsIgnoreCase("DC Comics")){
+            throw new EditoraInvalidaException("Você não pode usar este nome!");
+        }
     }
 
 }

@@ -91,7 +91,7 @@ public class ContaCorrente extends ContaGenerica implements ContaBancaria {
 
     @Override
     public String toString() {
-        return "Conta " + instituicaoBancaria.getDescricao() + " " + numeroConta;
+        return "Conta Corrente " + instituicaoBancaria.getDescricao() + " " + numeroConta;
     }
 
 }

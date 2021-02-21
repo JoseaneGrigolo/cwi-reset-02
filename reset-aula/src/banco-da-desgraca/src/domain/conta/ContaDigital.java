@@ -102,7 +102,7 @@ public class ContaDigital extends ContaGenerica implements ContaBancaria {
 
     @Override
     public String toString() {
-        return "Conta " + instituicaoBancaria.getDescricao() + " " + numeroConta;
+        return "Conta Digital " + instituicaoBancaria.getDescricao() + " " + numeroConta;
     }
 
 

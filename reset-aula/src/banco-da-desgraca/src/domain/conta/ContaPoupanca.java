@@ -71,18 +71,16 @@ public class ContaPoupanca  extends ContaGenerica implements ContaBancaria{
         double valorComTaxaIgual = valor * 1.005;
         double valorComTaxaDiferente = valor * 1.01;
 
-        if(this.instituicaoBancaria.equals(contaDestino.getInstituicaoBancaria())) {
-            if (valorComTaxaIgual <= this.saldo) {
-                this.saldo -= valorComTaxaIgual;
-                this.addTransacao(new Transacao(TipoTransacao.SAIDA, Data.getDataTransacao(), valor));
-                contaDestino.depositar(valor);
-                System.out.println("Transferindo valor " + DecimalFormat.getCurrencyInstance().format(valor) + " da " + this.toString());
-            } else if (valorComTaxaDiferente <= this.saldo) {
-                this.saldo -= valorComTaxaDiferente;
-                System.out.println("Transferindo valor " + DecimalFormat.getCurrencyInstance().format(valor) + " da " + this.toString());
-            } else {
-                throw new SaldoInsuficienteException("Saldo insuficiente!");
-            }
+        if (this.instituicaoBancaria.equals(contaDestino.getInstituicaoBancaria()) && (valorComTaxaIgual <= this.saldo)) {
+            this.saldo -= valorComTaxaIgual;
+            this.addTransacao(new Transacao(TipoTransacao.SAIDA, Data.getDataTransacao(), valor));
+            contaDestino.depositar(valor);
+            System.out.println("Transferindo valor " + DecimalFormat.getCurrencyInstance().format(valor) + " da " + this.toString()+ " para " + contaDestino.toString());
+        } else if (valorComTaxaDiferente <= this.saldo) {
+            this.saldo -= valorComTaxaDiferente;
+            System.out.println("Transferindo valor " + DecimalFormat.getCurrencyInstance().format(valor) + " da " + this.toString() + " para " + contaDestino.toString());
+        } else {
+            throw new SaldoInsuficienteException("Saldo insuficiente!");
         }
     }
 
@@ -107,7 +105,7 @@ public class ContaPoupanca  extends ContaGenerica implements ContaBancaria{
 
     @Override
     public String toString() {
-        return "Conta " + instituicaoBancaria.getDescricao() + " " + numeroConta;
+        return "Conta Poupança " + instituicaoBancaria.getDescricao() + " " + numeroConta;
     }
 
 }

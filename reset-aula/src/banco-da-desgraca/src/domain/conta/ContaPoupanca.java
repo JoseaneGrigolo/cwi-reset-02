@@ -11,7 +11,7 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 
 
-public class ContaPoupanca  extends ContaGenerica implements ContaBancaria{
+public class ContaPoupanca extends ContaGenerica implements ContaBancaria {
 
     private int numeroConta;
     private InstituicaoBancaria instituicaoBancaria;
@@ -25,8 +25,8 @@ public class ContaPoupanca  extends ContaGenerica implements ContaBancaria{
         this.saldo = saldo;
     }
 
-    private void verificaInstituicao(InstituicaoBancaria instituicaoBancaria){
-        if(instituicaoBancaria.equals(InstituicaoBancaria.NUBANK)){
+    private void verificaInstituicao(InstituicaoBancaria instituicaoBancaria) {
+        if (instituicaoBancaria.equals(InstituicaoBancaria.NUBANK)) {
             throw new NotPermitedException("Essa Instituição não permite conta poupança!");
         }
     }
@@ -56,7 +56,7 @@ public class ContaPoupanca  extends ContaGenerica implements ContaBancaria{
     @Override
     public void sacar(Double valor) {
         double valorComTaxa = valor * 1.02;
-        if ((valorComTaxa <= this.saldo) &&(valor >= 50.00)) {
+        if ((valorComTaxa <= this.saldo) && (valor >= 50.00)) {
             this.saldo -= valorComTaxa;
             this.addTransacao(new Transacao(TipoTransacao.SAIDA, Data.getDataTransacao(), valor));
             System.out.println("Sacando valor " + DecimalFormat.getCurrencyInstance().format(valor) + " da " + this.toString());
@@ -73,29 +73,31 @@ public class ContaPoupanca  extends ContaGenerica implements ContaBancaria{
 
         if (this.instituicaoBancaria.equals(contaDestino.getInstituicaoBancaria()) && (valorComTaxaIgual <= this.saldo)) {
             this.saldo -= valorComTaxaIgual;
-            this.addTransacao(new Transacao(TipoTransacao.SAIDA, Data.getDataTransacao(), valor));
-            contaDestino.depositar(valor);
-            System.out.println("Transferindo valor " + DecimalFormat.getCurrencyInstance().format(valor) + " da " + this.toString()+ " para " + contaDestino.toString());
+            this.addTransacao(new Transacao(TipoTransacao.SAIDA, Data.getDataTransacao(), valorComTaxaIgual));
+
         } else if (valorComTaxaDiferente <= this.saldo) {
             this.saldo -= valorComTaxaDiferente;
-            System.out.println("Transferindo valor " + DecimalFormat.getCurrencyInstance().format(valor) + " da " + this.toString() + " para " + contaDestino.toString());
+            this.addTransacao(new Transacao(TipoTransacao.SAIDA, Data.getDataTransacao(), valorComTaxaDiferente));
         } else {
             throw new SaldoInsuficienteException("Saldo insuficiente!");
         }
+        contaDestino.depositar(valor);
+        System.out.println("Transferindo valor " + DecimalFormat.getCurrencyInstance().format(valor) + " da " + this.toString() + " para " + contaDestino.toString());
     }
 
     @Override
     public void exibirExtrato(LocalDate inicio, LocalDate fim) {
-       if(inicio == null && fim == null) {
+        if (inicio == null && fim == null) {
             System.out.println("----- EXTRATO " + this.toString());
             for (Transacao transacao : this.getTransacoes()) {
                 if (transacao.getTipoTransacao().equals(TipoTransacao.ENTRADA)) {
-                    System.out.println("+ " + transacao.getValorTransacao() + " " + transacao.getDataTransacao());
+                    System.out.println("+ " + DecimalFormat.getCurrencyInstance().format(transacao.getValorTransacao()) + " " + transacao.getDataTransacao());
                 } else {
-                    System.out.println("- " + transacao.getValorTransacao() + " " + transacao.getDataTransacao());
+                    System.out.println("- " + DecimalFormat.getCurrencyInstance().format(transacao.getValorTransacao()) + " " + transacao.getDataTransacao());
                 }
             }
-       }
+        }
+
         /**
          * Exibe o extrato da conta para o período informado.
          *   Se não for passada a data de início, deve filtrar somente pela data de fim.

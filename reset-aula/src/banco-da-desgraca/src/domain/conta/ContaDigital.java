@@ -81,15 +81,16 @@ public class ContaDigital extends ContaGenerica implements ContaBancaria {
 
     }
 
+
     @Override
     public void exibirExtrato(LocalDate inicio, LocalDate fim) {
-        if(inicio == null && fim == null) {
+        if (inicio == null && fim == null) {
             System.out.println("----- EXTRATO " + this.toString());
             for (Transacao transacao : this.getTransacoes()) {
                 if (transacao.getTipoTransacao().equals(TipoTransacao.ENTRADA)) {
-                    System.out.println("+ " + transacao.getValorTransacao() + " " + transacao.getDataTransacao());
+                    System.out.println("+ " + DecimalFormat.getCurrencyInstance().format(transacao.getValorTransacao()) + " " + transacao.getDataTransacao());
                 } else {
-                    System.out.println("- " + transacao.getValorTransacao() + " " + transacao.getDataTransacao());
+                    System.out.println("- " + DecimalFormat.getCurrencyInstance().format(transacao.getValorTransacao()) + " " + transacao.getDataTransacao());
                 }
             }
         }

@@ -2,11 +2,12 @@ package domain.conta;
 
 import domain.Transacao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContaGenerica {
 
-    private List<Transacao> transacoes;
+    private List<Transacao> transacoes = new ArrayList<>();
 
     public List<Transacao> getTransacoes() {
         return transacoes;

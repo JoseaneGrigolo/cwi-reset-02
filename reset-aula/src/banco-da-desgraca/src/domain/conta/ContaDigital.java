@@ -83,15 +83,15 @@ public class ContaDigital extends ContaGenerica implements ContaBancaria {
 
         for (Transacao transacao : this.getTransacoes()) {
             if (inicio != null && fim != null) {
-                if (transacao.getDataTransacao().isAfter(inicio) && transacao.getDataTransacao().isBefore(fim)) {
+                if (transacao.getDataTransacao().isAfter(inicio.minusDays(1)) && transacao.getDataTransacao().isBefore(fim.plusDays(1))) {
                     filtradas.add(transacao);
                 }
             } else if (inicio != null && fim == null) {
-                if (transacao.getDataTransacao().isAfter(inicio)) {
+                if (transacao.getDataTransacao().isAfter(inicio.minusDays(1))) {
                     filtradas.add(transacao);
                 }
             } else if (inicio == null && fim != null) {
-                if (transacao.getDataTransacao().isBefore(fim)) {
+                if (transacao.getDataTransacao().isBefore(fim.plusDays(1))) {
                     filtradas.add(transacao);
                 }
             } else {

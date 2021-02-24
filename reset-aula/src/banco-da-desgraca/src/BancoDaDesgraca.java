@@ -18,6 +18,6 @@ public class BancoDaDesgraca {
 
         conta1.sacar(50.00);
         conta1.transferir(30.00, conta2);
-        conta1.exibirExtrato(LocalDate.of(2020, 7, 1), LocalDate.of(2021, 3, 2));
+        conta1.exibirExtrato(LocalDate.of(2020, 7, 5), LocalDate.of(2021, 3, 2));
     }
 }

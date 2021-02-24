@@ -6,7 +6,7 @@ public enum InstituicaoBancaria {
     BRADESCO("Bradesco"),
     CAIXA("Caixa Econômica Federal"),
     ITAU("Itaú"),
-    NUBANK("Digital Nubank");
+    NUBANK("Nubank");
 
     private String descricao;
 

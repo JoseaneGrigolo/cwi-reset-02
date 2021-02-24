@@ -54,12 +54,11 @@ public class ContaDigital extends ContaGenerica implements ContaBancaria {
 
     @Override
     public void sacar(Double valor) {
-        if (valor <= this.saldo) {
-            if (valor >= 10.00) {
-                this.saldo -= valor;
-                this.addTransacao(new Transacao(TipoTransacao.SAIDA, Data.getDataTransacao(), valor));
-                System.out.println("Sacando valor " + DecimalFormat.getCurrencyInstance().format(valor) + " da " + this.toString());
-            }
+        if ((valor <= this.saldo) && (valor >= 10.00)) {
+            this.saldo -= valor;
+            this.addTransacao(new Transacao(TipoTransacao.SAIDA, Data.getDataTransacao(), valor));
+            System.out.println("Sacando valor " + DecimalFormat.getCurrencyInstance().format(valor) + " da " + this.toString());
+
         } else {
             throw new SaldoInsuficienteException("Saldo insuficiente e/ou valor inferior ao minimo !");
         }
@@ -71,7 +70,7 @@ public class ContaDigital extends ContaGenerica implements ContaBancaria {
             this.saldo -= valor;
             this.addTransacao(new Transacao(TipoTransacao.SAIDA, Data.getDataTransacao(), valor));
             contaDestino.depositar(valor);
-            System.out.println("Transferindo valor " + DecimalFormat.getCurrencyInstance().format(valor) + " da " + this.toString());
+            System.out.println("Transferindo valor " + DecimalFormat.getCurrencyInstance().format(valor) + " da " + this.toString() + " para " + contaDestino.toString());
         } else {
             throw new SaldoInsuficienteException("Saldo insuficiente!");
         }
@@ -108,7 +107,7 @@ public class ContaDigital extends ContaGenerica implements ContaBancaria {
                 System.out.println("- " + DecimalFormat.getCurrencyInstance().format(transacao.getValorTransacao()) + " " + transacao.getDataTransacao());
             }
         }
-
+        System.out.println("--------------------");
     }
 
     @Override

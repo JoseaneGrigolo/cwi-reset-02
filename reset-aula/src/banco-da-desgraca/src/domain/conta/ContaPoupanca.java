@@ -113,6 +113,7 @@ public class ContaPoupanca extends ContaGenerica implements ContaBancaria {
                 System.out.println("- " + DecimalFormat.getCurrencyInstance().format(transacao.getValorTransacao()) + " " + transacao.getDataTransacao());
             }
         }
+        System.out.println("--------------------");
     }
 
     @Override

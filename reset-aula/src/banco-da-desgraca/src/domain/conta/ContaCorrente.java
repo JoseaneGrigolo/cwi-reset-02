@@ -5,9 +5,10 @@ import domain.InstituicaoBancaria;
 import domain.TipoTransacao;
 import domain.Transacao;
 import exception.SaldoInsuficienteException;
-
 import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContaCorrente extends ContaGenerica implements ContaBancaria {
 
@@ -44,16 +45,14 @@ public class ContaCorrente extends ContaGenerica implements ContaBancaria {
 
     @Override
     public void sacar(Double valor) {
-        if (valor <= this.saldo) {
-            if (valor % 5 == 0) {
-                this.saldo -= valor;
-                this.addTransacao(new Transacao(TipoTransacao.SAIDA, Data.getDataTransacao(), valor));
-                System.out.println("Sacando valor " + DecimalFormat.getCurrencyInstance().format(valor) + " da " + this.toString());
-            }
+        if ((valor <= this.saldo) && (valor % 5 == 0)) {
+            this.saldo -= valor;
+            this.addTransacao(new Transacao(TipoTransacao.SAIDA, Data.getDataTransacao(), valor));
+            System.out.println("Sacando valor " + DecimalFormat.getCurrencyInstance().format(valor) + " da " + this.toString());
         } else {
-            throw new SaldoInsuficienteException("Saldo insuficiente!");
-        }
+        throw new SaldoInsuficienteException("Saldo insuficiente! e/ou Valor não corresponde a regra!");
     }
+}
 
     @Override
     public void transferir(Double valor, ContaBancaria contaDestino) {
@@ -68,27 +67,36 @@ public class ContaCorrente extends ContaGenerica implements ContaBancaria {
         }
     }
 
-
     @Override
-    public void exibirExtrato(LocalDate inicio, LocalDate fim) {
+    public void exibirExtrato(LocalDate inicio, LocalDate fim) {       List<Transacao> filtradas = new ArrayList<>();
 
-        if (inicio == null && fim == null) {
-            System.out.println("----- EXTRATO " + this.toString());
-            for (Transacao transacao : this.getTransacoes()) {
-                if (transacao.getTipoTransacao().equals(TipoTransacao.ENTRADA)) {
-                    System.out.println("+ " + DecimalFormat.getCurrencyInstance().format(transacao.getValorTransacao()) + " " + transacao.getDataTransacao());
-                } else {
-                    System.out.println("- " + DecimalFormat.getCurrencyInstance().format(transacao.getValorTransacao()) + " " + transacao.getDataTransacao());
+        for (Transacao transacao : this.getTransacoes()) {
+            if (inicio != null && fim != null) {
+                if (transacao.getDataTransacao().isAfter(inicio) && transacao.getDataTransacao().isBefore(fim)) {
+                    filtradas.add(transacao);
                 }
+            } else if (inicio != null && fim == null) {
+                if (transacao.getDataTransacao().isAfter(inicio)) {
+                    filtradas.add(transacao);
+                }
+            } else if (inicio == null && fim != null) {
+                if (transacao.getDataTransacao().isBefore(fim)) {
+                    filtradas.add(transacao);
+                }
+            } else {
+                filtradas.add(transacao);
             }
         }
-        /**
-         * Exibe o extrato da conta para o período informado.
-         *   Se não for passada a data de início, deve filtrar somente pela data de fim.
-         *   Se não for passada a data de fim, deve filtrar somente pela data de início.
-        */
-    }
 
+        System.out.println("----- EXTRATO " + this.toString());
+        for (Transacao transacao : filtradas) {
+            if (transacao.getTipoTransacao().equals(TipoTransacao.ENTRADA)) {
+                System.out.println("+ " + DecimalFormat.getCurrencyInstance().format(transacao.getValorTransacao()) + " " + transacao.getDataTransacao());
+            } else {
+                System.out.println("- " + DecimalFormat.getCurrencyInstance().format(transacao.getValorTransacao()) + " " + transacao.getDataTransacao());
+            }
+        }
+    }
 
     @Override
     public String toString() {

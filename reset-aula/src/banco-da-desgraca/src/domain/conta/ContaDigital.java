@@ -9,14 +9,14 @@ import exception.SaldoInsuficienteException;
 
 import java.text.DecimalFormat;
 import java.time.LocalDate;
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContaDigital extends ContaGenerica implements ContaBancaria {
 
     private int numeroConta;
     private InstituicaoBancaria instituicaoBancaria;
     private double saldo;
-
 
     public ContaDigital(int numeroConta, InstituicaoBancaria instituicaoBancaria, double saldo) {
         this.numeroConta = numeroConta;
@@ -26,7 +26,7 @@ public class ContaDigital extends ContaGenerica implements ContaBancaria {
     }
 
     private void verificaInstituicao(InstituicaoBancaria instituicaoBancaria) {
-        if (instituicaoBancaria != InstituicaoBancaria.ITAU || instituicaoBancaria != InstituicaoBancaria.NUBANK) {
+        if (instituicaoBancaria != InstituicaoBancaria.ITAU && instituicaoBancaria != InstituicaoBancaria.NUBANK) {
             throw new NotPermitedException("Essa Instituição não permite conta Digital!");
         }
     }
@@ -34,7 +34,6 @@ public class ContaDigital extends ContaGenerica implements ContaBancaria {
     public int getNumeroConta() {
         return numeroConta;
     }
-
 
     @Override
     public InstituicaoBancaria getInstituicaoBancaria() {
@@ -51,7 +50,6 @@ public class ContaDigital extends ContaGenerica implements ContaBancaria {
         this.saldo += valor;
         this.addTransacao(new Transacao(TipoTransacao.ENTRADA, Data.getDataTransacao(), valor));
         System.out.println("Depositando valor " + DecimalFormat.getCurrencyInstance().format(valor) + " da " + this.toString());
-
     }
 
     @Override
@@ -65,7 +63,6 @@ public class ContaDigital extends ContaGenerica implements ContaBancaria {
         } else {
             throw new SaldoInsuficienteException("Saldo insuficiente e/ou valor inferior ao minimo !");
         }
-
     }
 
     @Override
@@ -78,34 +75,45 @@ public class ContaDigital extends ContaGenerica implements ContaBancaria {
         } else {
             throw new SaldoInsuficienteException("Saldo insuficiente!");
         }
-
     }
-
 
     @Override
     public void exibirExtrato(LocalDate inicio, LocalDate fim) {
-        if (inicio == null && fim == null) {
-            System.out.println("----- EXTRATO " + this.toString());
-            for (Transacao transacao : this.getTransacoes()) {
-                if (transacao.getTipoTransacao().equals(TipoTransacao.ENTRADA)) {
-                    System.out.println("+ " + DecimalFormat.getCurrencyInstance().format(transacao.getValorTransacao()) + " " + transacao.getDataTransacao());
-                } else {
-                    System.out.println("- " + DecimalFormat.getCurrencyInstance().format(transacao.getValorTransacao()) + " " + transacao.getDataTransacao());
+
+        List<Transacao> filtradas = new ArrayList<>();
+
+        for (Transacao transacao : this.getTransacoes()) {
+            if (inicio != null && fim != null) {
+                if (transacao.getDataTransacao().isAfter(inicio) && transacao.getDataTransacao().isBefore(fim)) {
+                    filtradas.add(transacao);
                 }
+            } else if (inicio != null && fim == null) {
+                if (transacao.getDataTransacao().isAfter(inicio)) {
+                    filtradas.add(transacao);
+                }
+            } else if (inicio == null && fim != null) {
+                if (transacao.getDataTransacao().isBefore(fim)) {
+                    filtradas.add(transacao);
+                }
+            } else {
+                filtradas.add(transacao);
             }
         }
-        /**
-         * Exibe o extrato da conta para o período informado.
-         *   Se não for passada a data de início, deve filtrar somente pela data de fim.
-         *   Se não for passada a data de fim, deve filtrar somente pela data de início.
-         */
+
+        System.out.println("----- EXTRATO " + this.toString());
+        for (Transacao transacao : filtradas) {
+            if (transacao.getTipoTransacao().equals(TipoTransacao.ENTRADA)) {
+                System.out.println("+ " + DecimalFormat.getCurrencyInstance().format(transacao.getValorTransacao()) + " " + transacao.getDataTransacao());
+            } else {
+                System.out.println("- " + DecimalFormat.getCurrencyInstance().format(transacao.getValorTransacao()) + " " + transacao.getDataTransacao());
+            }
+        }
+
     }
 
     @Override
     public String toString() {
         return "Conta Digital " + instituicaoBancaria.getDescricao() + " " + numeroConta;
     }
-
-
 }
 

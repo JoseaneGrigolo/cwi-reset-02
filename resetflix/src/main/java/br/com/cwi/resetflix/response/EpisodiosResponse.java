@@ -1,11 +1,11 @@
 package br.com.cwi.resetflix.response;
 
-public class DiretoresResponse {
+public class EpisodiosResponse {
 
     Long id;
     String nome;
 
-    public DiretoresResponse(final Long id, final String nome) {
+    public EpisodiosResponse(final Long id, final String nome) {
         this.id = id;
         this.nome = nome;
     }
@@ -25,5 +25,4 @@ public class DiretoresResponse {
     public void setNome(final String nome) {
         this.nome = nome;
     }
-
 }

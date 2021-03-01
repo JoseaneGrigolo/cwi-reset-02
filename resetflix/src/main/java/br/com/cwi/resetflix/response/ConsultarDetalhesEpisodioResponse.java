@@ -2,17 +2,17 @@ package br.com.cwi.resetflix.response;
 
 import java.util.List;
 
-public class ConsultarDetalhesDiretorResponse {
+public class ConsultarDetalhesEpisodioResponse {
 
     private Long id;
     private String nome;
-    private List<FilmeResponse> filmes;
+    private List<SerieResponse> series;
 
-    public ConsultarDetalhesDiretorResponse(final Long id, final String nome,
-                                         final List<FilmeResponse> filmes) {
+    public ConsultarDetalhesEpisodioResponse(final Long id, final String nome,
+                                         final List<SerieResponse> series) {
         this.id = id;
         this.nome = nome;
-        this.filmes = filmes;
+        this.series = series;
     }
 
     public Long getId() {
@@ -31,13 +31,11 @@ public class ConsultarDetalhesDiretorResponse {
         this.nome = nome;
     }
 
-    public List<FilmeResponse> getFilmes() {
-        return filmes;
+    public List<SerieResponse> getSeries() {
+        return series;
     }
 
-    public void setFilmes(final List<FilmeResponse> filmes) {
-        this.filmes = filmes;
+    public void setFilmes(final List<SerieResponse> series) {
+        this.series = series;
     }
-
-
 }

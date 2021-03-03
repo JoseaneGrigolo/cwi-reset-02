@@ -1,5 +1,7 @@
 package br.com.cwi.resetflix.service;
 
+import br.com.cwi.resetflix.domain.Genero;
+import br.com.cwi.resetflix.domain.SerieAssistida;
 import br.com.cwi.resetflix.entity.FilmeEntity;
 import br.com.cwi.resetflix.entity.SerieEntity;
 import br.com.cwi.resetflix.exception.UsuarioDesocupadoException;
@@ -31,17 +33,21 @@ public class UsuarioService {
     static FilmeResponseMapper MAPPER_FILME = new FilmeResponseMapper();
     static SerieResponseMapper MAPPER_SERIE = new SerieResponseMapper();
 
-    public void assistir(Long id){
-        usuarioRepository.assistir(id);
+    public void assistirFilme(Long id) {
+        usuarioRepository.assistirFilme(id);
+    }
+
+    public void assistirSerie(Long idSerie, Integer idTemporada, Integer idEpisodio) {
+        usuarioRepository.assistirSerie(idSerie, idTemporada, idEpisodio);
     }
 
     public List<FilmeResponse> getRecomendacoes() {
-        List<Long> idAssistidos = usuarioRepository.getAssistidos();
-        if(idAssistidos.isEmpty()){
+        List<Long> idAssistidos = usuarioRepository.getFilmesAssistidos();
+        if (idAssistidos.isEmpty()) {
             throw new UsuarioDesocupadoException("Não assistiu nada!");
         }
         List<FilmeEntity> assistidos = new ArrayList<FilmeEntity>();
-        for(Long id : idAssistidos){
+        for (Long id : idAssistidos) {
             FilmeEntity filmeEntity = filmeRepository.acharFilme(id);
             assistidos.add(filmeEntity);
         }
@@ -49,16 +55,26 @@ public class UsuarioService {
     }
 
     public List<SerieResponse> getRecomendacao() {
-        List<Long> idAssistidos = usuarioRepository.getAssistidos();
-        if(idAssistidos.isEmpty()){
+        List<SerieAssistida> seriesAssistidas = usuarioRepository.getSeriesAssistidas();
+        if (seriesAssistidas.isEmpty()) {
             throw new UsuarioDesocupadoException("Não assistiu nada!");
         }
-        List<SerieEntity> assistidos = new ArrayList<SerieEntity>();
-        for(Long id : idAssistidos){
-            SerieEntity serieEntity = serieRepository.acharSerie(id);
-            assistidos.add(serieEntity);
+
+        List<Genero> generos = new ArrayList<Genero>();
+
+        for (SerieAssistida serieAssistida : seriesAssistidas) {
+            SerieEntity serieEntity = serieRepository.acharSerie(serieAssistida.getId());
+            generos.add(serieEntity.getGenero());
         }
-        return MAPPER_SERIE.mapear(assistidos);
+
+        /*
+         TODO
+        1. Achar genero mais assistido
+        2. Buscar todas as series do genero mais assistido
+        3. Remover series ja assistidas da lista que buscou
+         */
+
+        return null;
     }
 
 }

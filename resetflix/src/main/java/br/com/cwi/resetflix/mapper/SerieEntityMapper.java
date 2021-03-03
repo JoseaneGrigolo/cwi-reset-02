@@ -9,6 +9,7 @@ public class SerieEntityMapper {
         return new SerieEntity(request.getNome()
                 , request.getGenero()
                 , request.getIdTemporada()
-                , request.getIdEpisodio());
+                , request.getIdEpisodio()
+                , request.getIdsAtores());
     }
 }

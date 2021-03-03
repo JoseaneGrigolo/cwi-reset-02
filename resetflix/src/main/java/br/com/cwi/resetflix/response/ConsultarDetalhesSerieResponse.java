@@ -1,23 +1,23 @@
 package br.com.cwi.resetflix.response;
 
-import java.util.List;
-
 import br.com.cwi.resetflix.domain.Genero;
+
+import java.util.List;
 
 public class ConsultarDetalhesSerieResponse {
 
     private Long id;
     private String nome;
     private Genero genero;
-    private TemporadasResponse temporada;
-    private EpisodiosResponse episodios;
+    private Long temporadas;
+    private Long episodios;
     private List<AtoresResponse> atores;
 
-    public ConsultarDetalhesSerieResponse(Long id, String nome, Genero genero, TemporadasResponse temporada, EpisodiosResponse episodios, List<AtoresResponse> atores) {
+    public ConsultarDetalhesSerieResponse(Long id, String nome, Genero genero, Long temporadas, Long episodios, List<AtoresResponse> atores) {
         this.id = id;
         this.nome = nome;
         this.genero = genero;
-        this.temporada = temporada;
+        this.temporadas = temporadas;
         this.episodios = episodios;
         this.atores = atores;
     }
@@ -46,19 +46,19 @@ public class ConsultarDetalhesSerieResponse {
         this.genero = genero;
     }
 
-    public TemporadasResponse getTemporada() {
-        return temporada;
+    public Long getTemporadas() {
+        return temporadas;
     }
 
-    public void setTemporada(TemporadasResponse temporada) {
-        this.temporada = temporada;
+    public void setTemporadas(Long temporadas) {
+        this.temporadas = temporadas;
     }
 
-    public EpisodiosResponse getEpisodios() {
+    public Long getEpisodios() {
         return episodios;
     }
 
-    public void setEpisodios(EpisodiosResponse episodios) {
+    public void setEpisodios(Long episodios) {
         this.episodios = episodios;
     }
 

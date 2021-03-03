@@ -9,7 +9,6 @@ import br.com.cwi.resetflix.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -49,6 +48,6 @@ public class FilmesController implements FilmesContract {
     @Override
     @PostMapping("/{id}/assistir")
     public void assistirFilme(@PathVariable("id") final Long id) {
-        usuarioService.assistir(id);
+        usuarioService.assistirFilme(id);
     }
 }

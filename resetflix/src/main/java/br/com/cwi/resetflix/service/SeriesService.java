@@ -1,15 +1,13 @@
 package br.com.cwi.resetflix.service;
 
 import br.com.cwi.resetflix.domain.Genero;
-import br.com.cwi.resetflix.entity.EpisodioEntity;
+import br.com.cwi.resetflix.entity.AtorEntity;
 import br.com.cwi.resetflix.entity.SerieEntity;
-import br.com.cwi.resetflix.entity.TemporadaEntity;
 import br.com.cwi.resetflix.mapper.ConsultarDetalhesSerieResponseMapper;
 import br.com.cwi.resetflix.mapper.SerieEntityMapper;
 import br.com.cwi.resetflix.mapper.SerieResponseMapper;
-import br.com.cwi.resetflix.repository.EpisodiosRepository;
+import br.com.cwi.resetflix.repository.AtoresRepository;
 import br.com.cwi.resetflix.repository.SeriesRepository;
-import br.com.cwi.resetflix.repository.TemporadasRepository;
 import br.com.cwi.resetflix.request.CriarSerieRequest;
 import br.com.cwi.resetflix.response.ConsultarDetalhesSerieResponse;
 import br.com.cwi.resetflix.response.SerieResponse;
@@ -26,10 +24,7 @@ public class SeriesService {
     private SeriesRepository serieRepository;
 
     @Autowired
-    private TemporadasRepository temporadasRepository;
-
-    @Autowired
-    private EpisodiosRepository episodiosRepository;
+    private AtoresRepository atoresRepository;
 
     static SerieResponseMapper MAPPER_RESPONSE = new SerieResponseMapper();
     static SerieEntityMapper MAPPER_ENTITY = new SerieEntityMapper();
@@ -50,22 +45,20 @@ public class SeriesService {
         }
     }
 
-
     public Long criarSerie(CriarSerieRequest request) {
         return serieRepository.criarSerie(MAPPER_ENTITY.mapear(request));
     }
 
     public ConsultarDetalhesSerieResponse consultarDetalhes(Long id) {
         SerieEntity serieEntity = serieRepository.acharSerie(id);
-        TemporadaEntity temporadaEntity = temporadasRepository.acharTemporadaPorId(serieEntity.getIdTemporadas());
-        List<EpisodioEntity> episodiosEntities = new ArrayList<EpisodioEntity>();
+        List<AtorEntity> atorEntities = new ArrayList<AtorEntity>();
 
-        for (Long idEpisodios : serieEntity.getIdEpisodios()) {
-            EpisodioEntity episodioEntity = episodiosRepository.acharEpisodioPorId(idEpisodios);
-           episodiosEntities.add(episodioEntity);
+        for (Long idAtor : serieEntity.getIdsAtores()) {
+            AtorEntity atorEntity = atoresRepository.acharAtorPorId(idAtor);
+            atorEntities.add(atorEntity);
         }
 
-        return MAPPER_DETALHES.mapear(serieEntity, temporadaEntity, episodiosEntities);
+        return MAPPER_DETALHES.mapear(serieEntity, atorEntities);
 
     }
 }

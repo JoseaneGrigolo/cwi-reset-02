@@ -43,6 +43,4 @@ public class DiretoresService {
         List<FilmeEntity> filmesDiretor = filmeRepository.acharFilmesDiretor(id);
         return MAPPER_DETALHES_DIRETOR.mapear(diretorSalvo, filmesDiretor);
     }
-
-
 }

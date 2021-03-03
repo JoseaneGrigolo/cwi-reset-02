@@ -9,24 +9,24 @@ public class SerieEntity {
     private Long id;
     private String nome;
     private Genero genero;
-    private Long idTemporadas;
-    private Long idEpisodios;
+    private Long qtdTemporadas;
+    private Long qtdEpisodios;
     private List<Long> idsAtores;
 
-    public SerieEntity(String nome, Genero genero, Long idTemporadas, Long idEpisodios, List<Long> idsAtores) {
+    public SerieEntity(String nome, Genero genero, Long qtdTemporadas, Long qtdEpisodios, List<Long> idsAtores) {
         this.nome = nome;
         this.genero = genero;
-        this.idTemporadas = idTemporadas;
-        this.idEpisodios = idEpisodios;
+        this.qtdTemporadas = qtdTemporadas;
+        this.qtdEpisodios = qtdEpisodios;
         this.idsAtores = idsAtores;
     }
 
-    public SerieEntity(Long id, String nome, Genero genero, Long idTemporadas, Long idEpisodios, List<Long> idsAtores) {
+    public SerieEntity(Long id, String nome, Genero genero, Long qtdTemporadas, Long qtdEpisodios, List<Long> idsAtores) {
         this.id = id;
         this.nome = nome;
         this.genero = genero;
-        this.idTemporadas = idTemporadas;
-        this.idEpisodios = idEpisodios;
+        this.qtdTemporadas = qtdTemporadas;
+        this.qtdEpisodios = qtdEpisodios;
         this.idsAtores = idsAtores;
     }
 
@@ -54,20 +54,20 @@ public class SerieEntity {
         this.genero = genero;
     }
 
-    public Long getIdTemporadas() {
-        return idTemporadas;
+    public Long getQtdTemporadas() {
+        return qtdTemporadas;
     }
 
-    public void setIdTemporradas(Long idTemporadas) {
-        this.idTemporadas = idTemporadas;
+    public void setQtdTemporadas(Long qtdTemporadas) {
+        this.qtdTemporadas = qtdTemporadas;
     }
 
-    public Long getIdEpisodios() {
-        return idEpisodios;
+    public Long getQtdEpisodios() {
+        return qtdEpisodios;
     }
 
-    public void setIdEpisodios(Long idEpisodios) {
-        this.idEpisodios = idEpisodios;
+    public void setQtdEpisodios(Long qtdEpisodios) {
+        this.qtdEpisodios = qtdEpisodios;
     }
 
     public List<Long> getIdsAtores() {
@@ -78,3 +78,4 @@ public class SerieEntity {
         this.idsAtores = idsAtores;
     }
 }
+

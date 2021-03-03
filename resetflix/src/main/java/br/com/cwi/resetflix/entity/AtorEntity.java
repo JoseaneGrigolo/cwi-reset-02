@@ -7,22 +7,26 @@ public class AtorEntity {
     private Long id;
     private String nome;
     private List<Long> idsFilmes;
+    private List<Long> idsSeries;
 
-    public AtorEntity(final String nome, final List<Long> idsFilmes) {
+    public AtorEntity(String nome, List<Long> idsFilmes, List<Long> idsSeries) {
         this.nome = nome;
         this.idsFilmes = idsFilmes;
+        this.idsSeries = idsSeries;
     }
-    public AtorEntity(final Long id, final String nome, final List<Long> idsFilmes) {
+
+    public AtorEntity(Long id, String nome, List<Long> idsFilmes, List<Long> idsSeries) {
         this.id = id;
         this.nome = nome;
         this.idsFilmes = idsFilmes;
+        this.idsSeries = idsSeries;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(final Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -30,7 +34,7 @@ public class AtorEntity {
         return nome;
     }
 
-    public void setNome(final String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
@@ -38,7 +42,15 @@ public class AtorEntity {
         return idsFilmes;
     }
 
-    public void setIdsFilmes(final List<Long> idsFilmes) {
+    public void setIdsFilmes(List<Long> idsFilmes) {
         this.idsFilmes = idsFilmes;
+    }
+
+    public List<Long> getIdsSeries() {
+        return idsSeries;
+    }
+
+    public void setIdsSeries(List<Long> idsSeries) {
+        this.idsSeries = idsSeries;
     }
 }

@@ -24,7 +24,7 @@ public class SeriesRepository {
         return series;
     }
 
-    public List<SerieEntity> acharSeriesEpisodios(final Long id) {
+    public List<SerieEntity> acharSeriesAtor(final Long id) {
         //TODO Filtrar na repository por id de ator
         return series;
     }
@@ -51,6 +51,5 @@ public class SeriesRepository {
             }
         }
         throw new NotFoundException("Serie " + id + " não encontrado.");
-
     }
 }
